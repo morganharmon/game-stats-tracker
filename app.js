@@ -40,8 +40,8 @@ form.addEventListener('submit', (e) => {
     // Create an object to "model" you statistic like the following:
     // { player: 'Bob', points: 2 }
     // Hint -- create the object from the form, push it onto the stats array, then call renderStats
-    const Player = { player: formD.get('player'), points: formD.get('points') };
-    stats.push(Player);
+    const player = { player: formD.get('player'), points: formD.get('points') };
+    stats.push(player);
     renderStats();
 });
 
@@ -60,4 +60,13 @@ save.addEventListener('click', () => {
     // { number: games.length + 1, totalPoints: totalPoints }
     // Push the new object onto the games array then call renderGames
     // reset the stats with resetStats
+    let totalPoints = 0;
+    for (const item of stats) {
+        totalPoints += Number(item.points);
+    }
+    let final = { number: games.length + 1, totalPoints: totalPoints };
+    games.push(final);
+    renderGames();
+    resetStats();
+    
 });
