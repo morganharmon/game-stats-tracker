@@ -43,6 +43,7 @@ form.addEventListener('submit', (e) => {
     const player = { player: formD.get('player'), points: formD.get('points') };
     stats.push(player);
     renderStats();
+    form.reset();
 });
 
 remove.addEventListener('click', () => {
